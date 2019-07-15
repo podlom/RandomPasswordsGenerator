@@ -159,14 +159,14 @@ $randomPassword = getPassword($passLen);
 	        </div>
 
 	        <div class="row">
-				<div class="input-field col s2">
+				<div class="input-field col s3">
 		          <button class="btn waves-effect waves-light" type="submit" name="action">New password
-		          	<i class="material-icons right">get new password</i>
+		          	<i class="material-icons right">new password</i>
 		          </button>
 		        </div>
-                <div class="input-field col s2">
+                <div class="input-field col s3">
                     <button class="btn btn1" data-clipboard-action="copy" data-clipboard-target="#passwordHeader">
-                        <i class="fa fa-clipboard" aria-hidden="true">copy to clipboard</i>
+                        <i class="fa fa-clipboard">copy to clipboard</i>
                     </button>
                 </div>
 	    	</div>

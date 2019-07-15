@@ -161,7 +161,7 @@ $randomPassword = getPassword($passLen);
 	        <div class="row">
 				<div class="input-field col s2">
 		          <button class="btn waves-effect waves-light" type="submit" name="action">
-                      <i class="material-icons right">new password</i>
+                      <i class="material-icons right"></i> get new password
 		          </button>
 		        </div>
 	    	</div>
@@ -169,7 +169,7 @@ $randomPassword = getPassword($passLen);
             <div class="row">
                 <div class="input-field col s2">
                     <button class="btn btn1" data-clipboard-action="copy" data-clipboard-target="#passwordHeader">
-                        <i class="fa fa-clipboard">copy to clipboard</i>
+                        <i class="fa fa-clipboard"></i> copy to clipboard
                     </button>
                 </div>
             </div>

@@ -160,7 +160,7 @@ $randomPassword = getPassword($passLen);
 
 	        <div class="row">
 				<div class="input-field col s2">
-		          <button id="btn1" class="btn waves-effect waves-light" type="submit" name="action">New password
+		          <button data-clipboard-action="copy" data-clipboard-target="#passwordHeader" class="btn waves-effect waves-light" type="submit" name="action">New password
 		          	<i class="material-icons right">send</i>
 		          </button>
 		        </div>
@@ -193,13 +193,10 @@ $randomPassword = getPassword($passLen);
 		return false;
 	});
 
-    var btn = document.getElementById('btn1');
-    var clipboard = new ClipboardJS(btn);
-
+    var clipboard = new ClipboardJS('.btn');
     clipboard.on('success', function(e) {
         console.log(e);
     });
-
     clipboard.on('error', function(e) {
         console.log(e);
     });

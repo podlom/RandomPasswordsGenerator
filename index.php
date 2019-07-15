@@ -205,6 +205,11 @@ $randomPassword = getPassword($passLen);
     clipboard.on('error', function(e) {
         console.log(e);
     });
+    
+    jQuery('.btn1').click(function(e1){
+        e1.preventDefault();
+        return false;
+    });
 
 </script>
 

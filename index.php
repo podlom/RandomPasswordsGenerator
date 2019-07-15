@@ -160,10 +160,15 @@ $randomPassword = getPassword($passLen);
 
 	        <div class="row">
 				<div class="input-field col s2">
-		          <button data-clipboard-action="copy" data-clipboard-target="#passwordHeader" class="btn waves-effect waves-light" type="submit" name="action">New password
+		          <button class="btn waves-effect waves-light" type="submit" name="action">New password
 		          	<i class="material-icons right">get new password</i>
 		          </button>
 		        </div>
+                <div class="input-field col s2">
+                    <button class="btn btn1" data-clipboard-action="copy" data-clipboard-target="#passwordHeader">
+                        <i class="fa fa-clipboard" aria-hidden="true">copy to clipboard</i>
+                    </button>
+                </div>
 	    	</div>
 		</form>
 
@@ -193,7 +198,7 @@ $randomPassword = getPassword($passLen);
 		return false;
 	});
 
-    var clipboard = new ClipboardJS('.btn');
+    var clipboard = new ClipboardJS('.btn1');
     clipboard.on('success', function(e) {
         console.log(e);
     });

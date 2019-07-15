@@ -198,17 +198,16 @@ $randomPassword = getPassword($passLen);
 		return false;
 	});
 
-    var clipboard = new ClipboardJS('.btn1');
-    clipboard.on('success', function(e) {
-        console.log(e);
-    });
-    clipboard.on('error', function(e) {
-        console.log(e);
-    });
-    
     jQuery('.btn1').click(function(e1){
+        var clipboard = new ClipboardJS('.btn1');
+        clipboard.on('success', function(e) {
+            console.log(e);
+        });
+        clipboard.on('error', function(e) {
+            console.log(e);
+        });
         e1.preventDefault();
-        return false;
+        // return false;
     });
 
 </script>

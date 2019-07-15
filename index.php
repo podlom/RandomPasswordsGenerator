@@ -117,7 +117,7 @@ $randomPassword = getPassword($passLen);
 
 <body>
 
-	<h1 aria-label="<?=str_replace('"', '&quot;', $randomPassword)?>" id="passwordHeader"><?=$randomPassword?></h1>
+	<h1 id="passwordHeader"><?=$randomPassword?></h1>
 
 	<div class="row">
 		<form id="f1" method="post" action="/<?= pathinfo(__FILE__, PATHINFO_BASENAME); ?>">

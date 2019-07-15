@@ -117,7 +117,7 @@ $randomPassword = getPassword($passLen);
 
 <body>
 
-	<h1 id="passwordHeader"><?=$randomPassword?></h1>
+	<h1 aria-label="<?=str_replace('"', '&quot;', $randomPassword)?>" id="passwordHeader"><?=$randomPassword?></h1>
 
 	<div class="row">
 		<form id="f1" method="post" action="/<?= pathinfo(__FILE__, PATHINFO_BASENAME); ?>">
@@ -160,8 +160,8 @@ $randomPassword = getPassword($passLen);
 
 	        <div class="row">
 				<div class="input-field col s2">
-		          <button data-clipboard-action="copy" data-clipboard-target="#passwordHeader" class="btn waves-effect waves-light" type="submit" name="action">New password
-		          	<i class="material-icons right">send</i>
+		          <button aria-label="<?=str_replace('"', '&quot;', $randomPassword)?>" data-clipboard-action="copy" data-clipboard-target="#passwordHeader" class="btn waves-effect waves-light" type="submit" name="action">New password
+		          	<i class="material-icons right">get new password</i>
 		          </button>
 		        </div>
 	    	</div>
@@ -193,7 +193,11 @@ $randomPassword = getPassword($passLen);
 		return false;
 	});
 
-    var clipboard = new ClipboardJS('.btn');
+    var clipboard = new ClipboardJS('.btn', {
+        text: function(trigger) {
+            return trigger.getAttribute('aria-label');
+        }
+    });
     clipboard.on('success', function(e) {
         console.log(e);
     });

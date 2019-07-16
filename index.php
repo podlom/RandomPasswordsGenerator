@@ -160,11 +160,19 @@ $randomPassword = getPassword($passLen);
 
 	        <div class="row">
 				<div class="input-field col s2">
-		          <button class="btn waves-effect waves-light" type="submit" name="action">New password
-		          	<i class="material-icons right">send</i>
+		          <button class="btn waves-effect waves-light" type="submit" name="action">
+                      <i class="material-icons right"></i> get new password
 		          </button>
 		        </div>
 	    	</div>
+
+            <div class="row">
+                <div class="input-field col s2">
+                    <button class="btn btn1" data-clipboard-action="copy" data-clipboard-target="#passwordHeader">
+                        <i class="fa fa-clipboard"></i> copy to clipboard
+                    </button>
+                </div>
+            </div>
 		</form>
 
 		<div class="row">
@@ -179,6 +187,7 @@ $randomPassword = getPassword($passLen);
 <script>window.jQuery || document.write('<script src="/js/jquery-3.4.0.min.js">\x3C/script>')</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
 <script type="text/javascript" src="/js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="/js/clipboard.min.js"></script>
 
 <script>
 
@@ -191,6 +200,18 @@ $randomPassword = getPassword($passLen);
 
 		return false;
 	});
+
+    jQuery('.btn1').click(function(e1){
+        var clipboard = new ClipboardJS('.btn1');
+        clipboard.on('success', function(e) {
+            console.log(e);
+        });
+        clipboard.on('error', function(e) {
+            console.log(e);
+        });
+        e1.preventDefault();
+        // return false;
+    });
 
 </script>
 

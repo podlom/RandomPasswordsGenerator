@@ -141,7 +141,9 @@ $randomPassword = getPassword($passLen);
 		          <input type="checkbox" id="upper" class="materialize-textarea" name="upper" value="1" checked="checked">
 		          <label for="upper">Uppercase</label>
 		        </div>
+            </div>
 
+            <div class="row">
 		        <div class="input-field col s2">
 		          <input type="checkbox" id="digit" class="materialize-textarea" name="digit" value="1" checked="checked">
 		          <label for="digit">Digits</label>

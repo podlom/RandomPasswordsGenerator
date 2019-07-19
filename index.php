@@ -131,7 +131,9 @@ $randomPassword = getPassword($passLen);
 		          <input type="text" id="len" class="materialize-textarea" name="len" value="<?=$passLen?>" minlength="1" maxlength="2" required>
 		          <label for="len">Length</label>
 		        </div>
+            </div>
 
+            <div class="row">
 		        <div class="input-field col s2">
 		          <input type="checkbox" id="lower" class="materialize-textarea" name="lower" value="1" checked="checked">
 		          <label for="lower">Lowercase</label>

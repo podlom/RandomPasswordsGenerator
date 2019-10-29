@@ -196,13 +196,13 @@ $randomPassword = getPassword($passLen);
 <script>
 
     jQuery( document ).ready(function() {
-        jQuery.post("https://st.rndpwd.info/generate-password", function(data) {
+        jQuery.post("/proxy.php?type=1", function(data) {
             console.log( data );
         });
     });
 
 	jQuery('#f1').submit(function(){
-        jQuery.post("https://st.rndpwd.info/generate-password", function(data) {
+        jQuery.post("/proxy.php?type=1", function(data) {
             console.log( data );
         });
 
@@ -216,7 +216,7 @@ $randomPassword = getPassword($passLen);
 	});
 
     jQuery('.btn1').click(function(e1){
-        jQuery.post("https://st.rndpwd.info/copy-password", function(data) {
+        jQuery.post("/proxy.php?type=2", function(data) {
             console.log( data );
         });
 

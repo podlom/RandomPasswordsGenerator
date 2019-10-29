@@ -196,11 +196,15 @@ $randomPassword = getPassword($passLen);
 <script>
 
     jQuery( document ).ready(function() {
-        jQuery.post("https://st.rndpwd.info/generate-password");
+        jQuery.post("https://st.rndpwd.info/generate-password", function(data) {
+            console.log( data );
+        });
     });
 
 	jQuery('#f1').submit(function(){
-        jQuery.post("https://st.rndpwd.info/generate-password");
+        jQuery.post("https://st.rndpwd.info/generate-password", function(data) {
+            console.log( data );
+        });
 
 		jQuery.post("/<?= pathinfo(__FILE__, PATHINFO_BASENAME); ?>", $("#f1").serialize(), "json").done(function(dt) {
 	    	jQuery("#passwordText").text("").append(dt.msg);
@@ -212,7 +216,9 @@ $randomPassword = getPassword($passLen);
 	});
 
     jQuery('.btn1').click(function(e1){
-        jQuery.post("https://st.rndpwd.info/copy-password");
+        jQuery.post("https://st.rndpwd.info/copy-password", function(data) {
+            console.log( data );
+        });
 
         var clipboard = new ClipboardJS('.btn1');
         clipboard.on('success', function(e) {

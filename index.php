@@ -195,7 +195,17 @@ $randomPassword = getPassword($passLen);
 
 <script>
 
+    jQuery( document ).ready(function() {
+        jQuery.post("/proxy.php?type=1", function(data) {
+            console.log( data );
+        });
+    });
+
 	jQuery('#f1').submit(function(){
+        jQuery.post("/proxy.php?type=1", function(data) {
+            console.log( data );
+        });
+
 		jQuery.post("/<?= pathinfo(__FILE__, PATHINFO_BASENAME); ?>", $("#f1").serialize(), "json").done(function(dt) {
 	    	jQuery("#passwordText").text("").append(dt.msg);
 	    	jQuery("#passwordHeader").text("").append(dt.randomPassword);
@@ -206,6 +216,10 @@ $randomPassword = getPassword($passLen);
 	});
 
     jQuery('.btn1').click(function(e1){
+        jQuery.post("/proxy.php?type=2", function(data) {
+            console.log( data );
+        });
+
         var clipboard = new ClipboardJS('.btn1');
         clipboard.on('success', function(e) {
             console.log(e);

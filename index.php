@@ -1,6 +1,8 @@
 <?php
-// Modified by Shkodenko V. Taras 2016-07-30
-//
+
+/**
+ * @author Taras Shkodenko <taras@shkodenko.com>
+ */
 
 $minPassLen = 1;
 $maxPassLen = 42;

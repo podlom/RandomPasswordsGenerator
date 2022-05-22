@@ -6,7 +6,7 @@
  * Date: 10/29/19
  * Time: 19:29
  *
- * @author Taras Shkodenko <ts@doagency.net>
+ * @author Taras Shkodenko <taras@shkodenko.com>
  */
 
 function sendPostRequest($url, $data)

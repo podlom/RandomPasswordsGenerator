@@ -28,7 +28,7 @@ if (!isset($_POST['len'])
 		$passwordConfig['len'] = rand($minPassLen, $maxPassLen);
 	}
 	$nF = 0;
-	$passParamName = array('lower', 'upper', 'digit', 'special', 'bracket');
+	$passParamName = array('lower', 'upper', 'digit', 'special', 'bracket', 'punctuation');
 	foreach ($passParamName as $par1) {
 		if (isset($_POST[$par1])) {
 			$passwordConfig[$par1] = true;
@@ -149,6 +149,11 @@ $randomPassword = getPassword($passLen);
 		          <input type="checkbox" id="upper" class="materialize-textarea" name="upper" value="1" checked="checked">
 		          <label for="upper">Uppercase</label>
 		        </div>
+
+                <div class="input-field col s2">
+                    <input type="checkbox" id="punctuation" class="materialize-textarea" name="punctuation" value="1" checked="checked">
+                    <label for="punctuation">Punctuation</label>
+                </div>
             </div>
 
             <div class="row">

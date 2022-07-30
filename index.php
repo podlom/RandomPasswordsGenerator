@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @author Taras Shkodenko <taras@shkodenko.com>
  */
@@ -57,7 +56,7 @@ if (!isset($_POST['len'])
 //
 function getPassword($passwordLen = 16, $passwordConfig = array()) {
 	if (empty($passwordConfig)) {
-		$passParamName = array('lower', 'upper', 'digit', 'special', 'bracket');
+		$passParamName = array('lower', 'upper', 'digit', 'special', 'bracket', 'punctuation');
 		foreach ($passParamName as $par1) {
 			$passwordConfig[$par1] = true;
 		}
@@ -74,8 +73,13 @@ function getPassword($passwordLen = 16, $passwordConfig = array()) {
 		$sAlphabet .= '0123456789';
 	}
 	if ($passwordConfig['special']) {
-		$sAlphabet .= '*%&?_=';
+        // Note, do not use :/@?& to get correct values for Symfony DATABASE_URL .env variables like shown in example below:
+        // DATABASE_URL="mysql://dbUser:dbPass@127.0.0.1:3306/dbName?serverVersion=5.7&charset=utf8mb4"
+		$sAlphabet .= '*%_=';
 	}
+    if ($passwordConfig['punctuation']) {
+        $sAlphabet .= '.,!?';
+    }
 	if ($passwordConfig['bracket']) {
 		$sAlphabet .= '{}[]()';
 	}

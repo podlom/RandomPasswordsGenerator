@@ -1,1 +1,6 @@
+# ignore rules for phpStorm IDE
 .idea/*
+
+# ignore rules for Docker setup
+/docker/volume/mysql/
+/src/

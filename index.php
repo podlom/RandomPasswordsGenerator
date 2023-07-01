@@ -89,7 +89,7 @@ function getPassword($passwordLen = 16, $passwordConfig = array()) {
 	$sNewPassword = '';
 	
 	for ($i = 0; $i < $passwordLen; ++ $i) {
-		$sNewPassword .= $sAlphabet{rand(0, $aLen)};
+		$sNewPassword .= $sAlphabet[rand(0, $aLen)];
 	}
 	
 	return $sNewPassword;
@@ -118,6 +118,7 @@ $randomPassword = getPassword($passLen);
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
 <title><?=$randomPassword?> - generated password (<?=$passLen?>)</title>
+<!-- PHP version 8.1+ -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 

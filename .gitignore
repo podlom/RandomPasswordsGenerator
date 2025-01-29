@@ -1,0 +1,12 @@
+# ignore rules for phpStorm IDE
+.idea/*
+
+# ignore rules for Docker setup
+/docker/volume/mysql/
+/src/
+
+# ignore composer.lock
+composer.lock
+
+# ignore vendor folder
+vendor/*

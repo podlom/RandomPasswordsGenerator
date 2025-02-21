@@ -1,6 +1,6 @@
 <?php
 /**
- * @author Taras Shkodenko <taras@shkodenko.com>
+ * @author Taras Shkodenko <podlom@gmail.com>
  */
 
 $minPassLen = 1;
@@ -113,13 +113,13 @@ $randomPassword = getPassword($passLen);
   gtag('config', 'UA-114436780-1');
 </script>
 
-<meta charset="UTF-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
-<title><?=$randomPassword?> - generated password (<?=$passLen?>)</title>
-<!-- PHP version 8.1+ -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+    <title><?=$randomPassword?> - generated password (<?=$passLen?>)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 
 <body>

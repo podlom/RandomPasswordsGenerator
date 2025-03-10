@@ -3,6 +3,10 @@
  * @author Taras Shkodenko <podlom@gmail.com>
  */
 
+if (!defined('GOOGLE_GTAG_ID')) {
+    define('GOOGLE_GTAG_ID', 'G-5THCH12P6M');
+}
+
 $minPassLen = 1;
 $maxPassLen = 42;
 $lenMsg = '';
@@ -53,7 +57,6 @@ if (!isset($_POST['len'])
 	exit;
 }	
 
-//
 function getPassword($passwordLen = 16, $passwordConfig = array()) {
 	if (empty($passwordConfig)) {
 		$passParamName = array('lower', 'upper', 'digit', 'special', 'bracket', 'punctuation');
@@ -94,23 +97,21 @@ function getPassword($passwordLen = 16, $passwordConfig = array()) {
 	
 	return $sNewPassword;
 }
-//
 	
 $randomPassword = getPassword($passLen);
 
-	
 ?>
 <!DOCTYPE html>
 <html lang="uk">
 <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5THCH12P6M"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=<?=GOOGLE_GTAG_ID?>"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', 'G-5THCH12P6M');
+        gtag('config', '<?=GOOGLE_GTAG_ID?>');
     </script>
 
     <meta charset="UTF-8" />
@@ -176,7 +177,7 @@ $randomPassword = getPassword($passLen);
 
 	        <div class="row">
 				<div class="input-field col s2">
-		          <button class="btn waves-effect waves-light" type="submit" name="action">
+		          <button class="btn waves-effect waves-light" type="submit" name="action" id="generate-password">
                       <i class="material-icons right"></i> get new password
 		          </button>
 		        </div>
@@ -184,7 +185,7 @@ $randomPassword = getPassword($passLen);
 
             <div class="row">
                 <div class="input-field col s2">
-                    <button class="btn btn1" data-clipboard-action="copy" data-clipboard-target="#passwordHeader">
+                    <button class="btn btn1" data-clipboard-action="copy" data-clipboard-target="#passwordHeader" id="copy-password">
                         <i class="fa fa-clipboard"></i> copy to clipboard
                     </button>
                 </div>
@@ -243,6 +244,27 @@ $randomPassword = getPassword($passLen);
         // return false;
     });
 
+    document.addEventListener("DOMContentLoaded", function () {
+        const generateBtn = document.getElementById("generate-password");
+        if (generateBtn) {
+            generateBtn.addEventListener("click", function () {
+                gtag('event', 'generate_password', {
+                    'event_category': 'Password',
+                    'event_label': 'New password generated'
+                });
+            });
+        }
+
+        const copyBtn = document.getElementById("copy-password");
+        if (copyBtn) {
+            copyBtn.addEventListener("click", function () {
+                gtag('event', 'copy_password', {
+                    'event_category': 'Password',
+                    'event_label': 'Password copied to clipboard'
+                });
+            });
+        }
+    });
 </script>
 
 </body>

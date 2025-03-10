@@ -104,13 +104,13 @@ $randomPassword = getPassword($passLen);
 <html lang="uk">
 <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QSWXSVBC5P"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5THCH12P6M"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', 'G-QSWXSVBC5P');
+        gtag('config', 'G-5THCH12P6M');
     </script>
 
     <meta charset="UTF-8" />

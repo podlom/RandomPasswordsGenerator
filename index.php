@@ -208,17 +208,14 @@ $randomPassword = getPassword($passLen);
 
 <script>
 
-    jQuery( document ).ready(function() {
-        jQuery.post("/proxy.php?type=1", function(data) {
-            console.log( data );
+    document.addEventListener("DOMContentLoaded", function () {
+        gtag('event', 'generate_password', {
+            'event_category': 'Password',
+            'event_label': 'New password generated'
         });
     });
 
 	jQuery('#f1').submit(function(){
-        jQuery.post("/proxy.php?type=1", function(data) {
-            console.log( data );
-        });
-
 		jQuery.post("/<?= pathinfo(__FILE__, PATHINFO_BASENAME); ?>", $("#f1").serialize(), "json").done(function(dt) {
 	    	jQuery("#passwordText").text("").append(dt.msg);
 	    	jQuery("#passwordHeader").text("").append(dt.randomPassword);
@@ -227,22 +224,6 @@ $randomPassword = getPassword($passLen);
 
 		return false;
 	});
-
-    jQuery('.btn1').click(function(e1){
-        jQuery.post("/proxy.php?type=2", function(data) {
-            console.log( data );
-        });
-
-        var clipboard = new ClipboardJS('.btn1');
-        clipboard.on('success', function(e) {
-            console.log(e);
-        });
-        clipboard.on('error', function(e) {
-            console.log(e);
-        });
-        e1.preventDefault();
-        // return false;
-    });
 
     document.addEventListener("DOMContentLoaded", function () {
         const generateBtn = document.getElementById("generate-password");

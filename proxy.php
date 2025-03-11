@@ -41,14 +41,14 @@ if (isset($_GET['type']) && !empty($_GET['type'])) {
     $type = $_GET['type'];
     switch ($type) {
         case '1':
-            $res = sendPostRequest('https://st.rndpwd.info/generate-password', [
+            $res = sendPostRequest('https://st-rndpwd.shkodenko.com/generate-password', [
                 'HTTP_REFERER' => $_SERVER['HTTP_REFERER'],
                 'HTTP_USER_AGENT' => $_SERVER['HTTP_USER_AGENT'],
                 'REMOTE_ADDR' => base64_encode($_SERVER['REMOTE_ADDR']),
             ]);
             break;
         case '2':
-            $res = sendPostRequest('https://st.rndpwd.info/copy-password', [
+            $res = sendPostRequest('https://st-rndpwd.shkodenko.com/copy-password', [
                 'HTTP_REFERER' => $_SERVER['HTTP_REFERER'],
                 'HTTP_USER_AGENT' => $_SERVER['HTTP_USER_AGENT'],
                 'REMOTE_ADDR' => base64_encode($_SERVER['REMOTE_ADDR']),

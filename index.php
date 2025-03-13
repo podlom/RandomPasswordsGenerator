@@ -10,12 +10,12 @@ if (!defined('GOOGLE_GTAG_ID')) {
 $minPassLen = 1;
 $maxPassLen = 42;
 $lenMsg = '';
-if (!isset($_POST['len']) 
-	|| (!is_numeric($_POST['len']))
-	|| (strlen($_POST['len']) == 0)
-	|| ($_POST['len'] > $maxPassLen) 
-	|| ($_POST['len'] < $minPassLen) 
-) {
+
+$passwordLen = filter_input(INPUT_POST, 'len', FILTER_VALIDATE_INT, [
+    'options' => ['min_range' => $minPassLen, 'max_range' => $maxPassLen]
+]) ?: 16;
+
+if (!isset($_POST['len'])) {
 	$passLen = 16;
 	$lenMsg = '<div>'.
 		'Generated password using default length value: <b>' . $passLen . '</b>. '.
@@ -47,6 +47,9 @@ if (!isset($_POST['len'])
 		}
 	}
 
+    if ($passwordLen > $maxPassLen) {
+        $passwordLen = $maxPassLen;
+    }
 	$randomPassword = getPassword($passwordLen, $passwordConfig);
 	header('Content-type: application/json; charset=UTF-8');
 	echo json_encode(array('randomPassword' => $randomPassword, 'msg' => '<div>'.
@@ -88,14 +91,10 @@ function getPassword($passwordLen = 16, $passwordConfig = array()) {
 	}
 	
 	$aLen = strlen($sAlphabet) - 1;
-	
-	$sNewPassword = '';
-	
-	for ($i = 0; $i < $passwordLen; ++ $i) {
-		$sNewPassword .= $sAlphabet[rand(0, $aLen)];
-	}
-	
-	return $sNewPassword;
+
+    $sNewPassword = substr(str_shuffle(str_repeat($sAlphabet, ceil($passwordLen / strlen($sAlphabet)))), 0, $passwordLen);
+
+    return $sNewPassword;
 }
 	
 $randomPassword = getPassword($passLen);
@@ -215,7 +214,31 @@ $randomPassword = getPassword($passLen);
         });
     });
 
-	jQuery('#f1').submit(function(){
+    document.addEventListener("DOMContentLoaded", function () {
+        var clipboard = new ClipboardJS("#copy-password");
+
+        clipboard.on("success", function (e) {
+            M.toast({ html: "Password copied to clipboard!", classes: "green" });
+            e.clearSelection();
+        });
+
+        clipboard.on("error", function () {
+            M.toast({ html: "Failed to copy password!", classes: "red" });
+        });
+
+        const copyBtn = document.getElementById("copy-password");
+        if (copyBtn) {
+            copyBtn.addEventListener("click", function (event) {
+                event.preventDefault();
+                gtag("event", "copy_password", {
+                    event_category: "Password",
+                    event_label: "Password copied to clipboard"
+                });
+            });
+        }
+    });
+
+    jQuery('#f1').submit(function(){
 		jQuery.post("/<?= pathinfo(__FILE__, PATHINFO_BASENAME); ?>", $("#f1").serialize(), "json").done(function(dt) {
 	    	jQuery("#passwordText").text("").append(dt.msg);
 	    	jQuery("#passwordHeader").text("").append(dt.randomPassword);
@@ -235,17 +258,8 @@ $randomPassword = getPassword($passLen);
                 });
             });
         }
-
-        const copyBtn = document.getElementById("copy-password");
-        if (copyBtn) {
-            copyBtn.addEventListener("click", function () {
-                gtag('event', 'copy_password', {
-                    'event_category': 'Password',
-                    'event_label': 'Password copied to clipboard'
-                });
-            });
-        }
     });
+
 </script>
 
 </body>

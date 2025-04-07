@@ -4,3 +4,6 @@
 # ignore rules for Docker setup
 /docker/volume/mysql/
 /src/
+
+# ingnore node_modules
+node_modules/ 

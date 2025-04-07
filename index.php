@@ -1,4 +1,7 @@
 <?php
+/**
+ * @author Taras Shkodenko <podlom@gmail.com>
+ */
 
 if (!defined('GOOGLE_GTAG_ID')) {
     define('GOOGLE_GTAG_ID', 'G-5THCH12P6M');
@@ -76,6 +79,8 @@ function getPassword($passwordLen = 16, $passwordConfig = array()) {
 		$sAlphabet .= '0123456789';
 	}
 	if ($passwordConfig['special']) {
+	// Note, do not use :/@?& to get correct values for Symfony DATABASE_URL .env variables like shown in example below:
+	// DATABASE_URL="mysql://dbUser:dbPass@127.0.0.1:3306/dbName?serverVersion=5.7&charset=utf8mb4"
 		$sAlphabet .= '*%_=';
 	}
     if ($passwordConfig['punctuation']) {
@@ -96,8 +101,9 @@ $randomPassword = getPassword($passLen);
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
+		<!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=<?=GOOGLE_GTAG_ID?>"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
